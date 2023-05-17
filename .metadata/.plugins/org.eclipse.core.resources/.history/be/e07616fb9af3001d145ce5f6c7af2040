@@ -1,0 +1,10 @@
+package kh.spring.controllers;
+
+public class SamsungTv {
+
+	private int price;
+	private String brand;
+	
+	public void to() {}
+	public void tf() {}
+}

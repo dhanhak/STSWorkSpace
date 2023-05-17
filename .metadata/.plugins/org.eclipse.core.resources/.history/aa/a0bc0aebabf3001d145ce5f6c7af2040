@@ -1,0 +1,17 @@
+package kh.spring.dd;
+
+public class AppleSpeaker implements Speaker{
+
+	@Override
+	public void volumUp() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void volumDown() {
+		// TODO Auto-generated method stub
+		
+	}
+	
+}

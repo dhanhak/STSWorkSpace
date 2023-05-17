@@ -1,0 +1,11 @@
+package kh.spring.dd;
+
+public class SonySpeaker {
+	
+	public void volumUp() {
+		System.out.println("UP");
+	}
+	public void volumDown() {
+		System.out.println("Down");
+	}
+}

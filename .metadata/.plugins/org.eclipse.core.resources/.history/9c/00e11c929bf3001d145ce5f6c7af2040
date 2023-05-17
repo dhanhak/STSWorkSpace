@@ -1,0 +1,12 @@
+package kh.spring.controllers;
+
+public class SamsungTv implements TV{
+
+	private int price;
+	private String brand;
+	
+	public void powerOn() {
+		System.out.println("sumsung");
+	}
+	public void powerOff() {}
+}

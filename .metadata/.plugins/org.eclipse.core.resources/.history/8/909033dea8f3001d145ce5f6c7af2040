@@ -1,0 +1,16 @@
+package kh.spring.controllers;
+
+public class LGTv implements Tv{
+	
+	private int price;
+	private String brand;
+	
+	
+	public void powerOn() {
+		System.out.println("LG");
+	}
+	
+	public void powerOff() {}
+	
+	
+}

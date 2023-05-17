@@ -1,0 +1,14 @@
+package kh.spring.controllers;
+
+public class Main {
+	public static void main(String[] args) {
+		
+		// 제어의 역전을 통한 유지보수의 장점을 취한다.
+//		SamsungTv tv = new SamsungTv();
+//		LGTv tv = new LGTv();
+		Tv tv = TvFactory.getTv("samsung");
+		tv.powerOn();
+		tv.powerOff();
+		
+	}
+}

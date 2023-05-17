@@ -1,0 +1,18 @@
+package kh.spring.dd;
+
+import kh.spring.inter.Tv;
+
+public class LGTv implements Tv{
+	
+	private int price;
+	private String brand;
+	
+	
+	public void powerOn() {
+		System.out.println("LG");
+	}
+	
+	public void powerOff() {}
+	
+	
+}
