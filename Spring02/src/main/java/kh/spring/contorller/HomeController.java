@@ -7,18 +7,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
 
 import kh.spring.dto.MoviesDTO;
-import kh.spring.repository.MoviesDAO;
+import kh.spring.repositories.MoviesDAO;
 
 @Controller
-@RequestMapping("/")
 public class HomeController {
 	
 	@Autowired	// Annotation DI
@@ -35,37 +34,68 @@ public class HomeController {
 	}
 	
 	@PostMapping(value = "/inputProc")
-	public String inputProc(MoviesDTO dto) {
-		try {
+	public String inputProc(MoviesDTO dto) throws SQLException {
 			int result = dao.insert(dto);
 			return "redirect:/";
-		} catch (SQLException e) {
-			e.printStackTrace();
-			return "redirect:/error";
-		}
 	}
 	
 	@GetMapping(value = "/toOutput")
-	public String outputProc(Model model) {
-		try {
+	public String outputProc(Model model) throws SQLException {
 			List<MoviesDTO> list =  dao.selectAll();
 			model.addAttribute("list",list);
 			return "list";
-		} catch (SQLException e) {
-			e.printStackTrace();
-			return "ridirect:/error";
-		}
 	}
 	
-	@PutMapping()
-	public String Put() {
-		return "hello";	
+	@PostMapping(value = "/delete")
+	public String Delete(int deleteID) throws SQLException {
+			int result = dao.delete(deleteID);
+			return "redirect:/toOutput";
 	}
 	
-	@DeleteMapping()
-	public String Delete() {
-		return "del";	
+	@PostMapping(value = "/modify")
+	public String Update(MoviesDTO dto) throws SQLException {
+			int result = dao.update(dto);
+			return "redirect:/toOutput";
 	}
+	
+	@GetMapping("/selectById")
+	public String selectById(int id) {
+		MoviesDTO dto = dao.selectById(id);
+		System.out.println(dto.getId() +" : "+ dto.getTitle() +" : "+ dto.getGenre());
+		return "redirect:/";
+	}
+	
+	@GetMapping("/selectCount")
+	public String selectCount() {
+		int result = dao.selectCount();
+		System.out.println(result);
+		return "redirect:/";
+	}
+	
+	@ExceptionHandler(SQLException.class)
+	public String exceptionHandler(Exception e) {
+		e.printStackTrace();
+		return "redirect:/error";
+	}
+//	
+//	@ExceptionHandler(Exception.class)
+//	public String exceptionHandler() {
+//		
+//	}
+	
+//	@PutMapping()
+//	public String Put() {
+//		return "hello";	
+//	}
+//	
+//	@DeleteMapping(value = "/{id}")
+//	public void Delet(@PathVariable int id) {
+//		try {
+//			int result = dao.delete(id);
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//		}
+//	}
 	
 //	@RequestMapping(value = "/", method = RequestMethod.GET)
 //	public String home() {
