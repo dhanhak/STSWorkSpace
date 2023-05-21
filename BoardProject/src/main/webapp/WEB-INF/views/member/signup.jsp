@@ -55,7 +55,7 @@
                 아이디
             </div>
             <div class="col-9 col-sm-7 col-md-6 p-1">
-                <input type="text" name="id" class=" form-control enterToNext" id="id" placeholder="아이디를 입력해주세요.">
+                <input type="text" name="userId" class=" form-control enterToNext" id="userId" placeholder="아이디를 입력해주세요.">
             </div>
             <div class="col-12 col-sm-3 col-md-4 d-flex justify-content-sm-left align-items-center justify-content-center">
                 <button type="button" id="duplicationCheck" class="btn btn-outline-primary">중복확인</button>
@@ -244,19 +244,19 @@
         };
         
         $('#duplicationCheck').on('click', function(){
-        	const id = $('#id').val();
+        	const userId = $('#userId').val();
         	
         	$.ajax({
         		url:"/member/idCheck",
-        		data:{id:id},
+        		data:{userId:userId},
         	}).done(function(resp){
         		console.log(resp); // JSON.parse 하기 전의 resp
-//         		resp = JSON.parse(resp);
-//        		console.log(resp); // JSON.parse 한 후의 resp 
+         		resp = JSON.parse(resp);
+        		console.log(resp); // JSON.parse 한 후의 resp 
         		// 잘 분석되었는지 글씨 색깔 확인해보기
         		if(resp){
         			alert("이미 사용중이에용");
-        			$("#id").val("");
+        			$("#userId").val("");
         		}else{
         			alert("사용가능해용");
         		}

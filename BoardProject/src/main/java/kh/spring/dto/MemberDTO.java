@@ -1,6 +1,6 @@
 package kh.spring.dto;
 
-import java.security.Timestamp;
+import java.sql.Timestamp;
 
 public class MemberDTO {
 	private int id;
@@ -12,13 +12,14 @@ public class MemberDTO {
 	private String zipcode;
 	private String address1;
 	private String address2;
+	private Timestamp joinDate;
 
 	public MemberDTO() {
 		super();
 	}
 
 	public MemberDTO(int id, String userId, String password, String name, String phone, String email, String zipcode,
-			String address1, String address2) {
+			String address1, String address2, Timestamp joinDate) {
 		super();
 		this.id = id;
 		this.userId = userId;
@@ -29,6 +30,7 @@ public class MemberDTO {
 		this.zipcode = zipcode;
 		this.address1 = address1;
 		this.address2 = address2;
+		this.joinDate = joinDate;
 	}
 
 	public int getId() {
@@ -101,6 +103,14 @@ public class MemberDTO {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public Timestamp getJoinDate() {
+		return joinDate;
+	}
+
+	public void setJoinDate(Timestamp joinDate) {
+		this.joinDate = joinDate;
 	}
 
 }

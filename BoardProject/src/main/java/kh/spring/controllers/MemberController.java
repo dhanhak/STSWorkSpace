@@ -23,9 +23,9 @@ public class MemberController {
 	
 	@ResponseBody
 	@RequestMapping(value="/idCheck", produces="text/html;charset=utf8")
-	public String idCheck(String id) {
-		System.out.println("전달 된 ID : " + id);
-		boolean result = dao.isMember(id);
+	public String idCheck(String userId) {
+		System.out.println("전달 된 ID : " + userId);
+		boolean result = dao.isMember(userId);
 		return String.valueOf(result);
 	}
 }
