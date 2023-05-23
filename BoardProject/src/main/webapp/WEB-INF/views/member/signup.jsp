@@ -244,11 +244,12 @@
         };
         
         $('#duplicationCheck').on('click', function(){
-        	const userId = $('#userId').val();
+ //       	const userId = $('#userId').val();
         	
         	$.ajax({
         		url:"/member/idCheck",
-        		data:{userId:userId},
+        		type: 'post',
+        		data:{userId:$('#userId').val()}
         	}).done(function(resp){
         		console.log(resp); // JSON.parse 하기 전의 resp
          		resp = JSON.parse(resp);

@@ -19,7 +19,7 @@ public class MemberDAO {
 	private final static String UPDATE_SQL = "UPDATE member SET name = ?, phone = ? WHERE id = ?";
 	private final static String DELETE_SQL = "DELETE FROM member WHERE id = ?";
 	private final static String SELECT_ALL_SQL = "SELECT * FROM member";
-	private final static String SELECRT_BY_ID_SQL = "SELECT COUNT(*) FROM member WHERE user_Id = ?";
+	private final static String SELECRT_BY_ID_SQL = "SELECT COUNT(*) FROM members WHERE id = ?";
 	
 	public int save(MemberDTO dto) {
 		return jdbc.update(INSERT_SQL,dto.getId(),dto.getPassword(),dto.getName(),dto.getPhone(),dto.getEmail());
@@ -38,6 +38,8 @@ public class MemberDAO {
 	}
 
 	public boolean isMember(String userId) {
-		return jdbc.queryForObject(SELECRT_BY_ID_SQL, Boolean.class, userId);
+		Boolean result =  jdbc.queryForObject(SELECRT_BY_ID_SQL, Boolean.class, userId);
+		System.out.println(result);
+		return result;
 	}
 }
