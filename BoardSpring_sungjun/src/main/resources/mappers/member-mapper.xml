@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Members">
+
+	<insert id="join">
+		INSERT INTO members VALUES(#{id}, #{pw}, #{name}, #{phone}, #{email}, #{zipcode}, #{address1}, #{address2}, #{join_date})
+	</insert>
+	
+	<select id="IdCheck">
+		SELECT COUNT(*) FROM members WHERE id=#{id}
+	</select>
+	
+</mapper>
