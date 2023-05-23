@@ -9,6 +9,7 @@ import java.util.List;
 
 import javax.sql.DataSource;
 
+import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -20,47 +21,61 @@ import oracle.jdbc.driver.Message;
 
 @Repository
 public class MessageDAO {
-	
-	private final static String INSERT_SQL = "INSERT INTO message VALUES(message_seq.nextval,?,?)";
-	private final static String SELECT_ALL_SQL = "SELECT * FROM message";
-	private final static String UPDATE_SQL = "UPDATE message SET writer = ?, message = ? WHERE seq = ?";
-	private final static String DELETE_SQL = "DELETE FROM message WHERE seq = ?";
-	
-	@Autowired
-	private JdbcTemplate jdbc;
 
-	public int insert(MessageDTO dto) {
-		return jdbc.update(INSERT_SQL, dto.getWriter(), dto.getMessage());
-	}
+	@Autowired
+	private SqlSessionTemplate mybatis;
 	
-	public int update(MessageDTO dto) {
-		return jdbc.update(UPDATE_SQL, dto.getWriter(), dto.getMessage(), dto.getSeq());
+	public int insert(MessageDTO dto) {
+		return mybatis.insert("Message.insert", dto);
 	}
 	
 	public int delete(int id) {
-		return jdbc.update(DELETE_SQL, id);
+		return mybatis.delete("Message.delete", id);
+	}
+	
+	public int update(MessageDTO dto) {
+		return mybatis.update("Message.update", dto);
 	}
 	
 	public List<MessageDTO> read(){
-		return jdbc.query(SELECT_ALL_SQL, this::selectAll);
-	}
-	
-	public List<MessageDTO> read(int id){
-		return jdbc.query(SELECT_ALL_SQL, new BeanPropertyRowMapper<MessageDTO>(MessageDTO.class), id);
-	}
-	
-	private MessageDTO selectAll(ResultSet resultSet, int rowNum) throws SQLException {
-		return new MessageDTO(resultSet.getInt("seq"),resultSet.getString("writer"),resultSet.getString("message"));
+		return mybatis.selectList("Message.read");
 	}
 	
 	
 	
-	
-	
-	
-	
-	
-	
+//	private final static String INSERT_SQL = "INSERT INTO message VALUES(message_seq.nextval,?,?)";
+//	private final static String SELECT_ALL_SQL = "SELECT * FROM message";
+//	private final static String UPDATE_SQL = "UPDATE message SET writer = ?, message = ? WHERE seq = ?";
+//	private final static String DELETE_SQL = "DELETE FROM message WHERE seq = ?";
+//	
+//	@Autowired
+//	private JdbcTemplate jdbc;
+//
+//	public int insert(MessageDTO dto) {
+//		return jdbc.update(INSERT_SQL, dto.getWriter(), dto.getMessage());
+//	}
+//	
+//	public int update(MessageDTO dto) {
+//		return jdbc.update(UPDATE_SQL, dto.getWriter(), dto.getMessage(), dto.getSeq());
+//	}
+//	
+//	public int delete(int id) {
+//		return jdbc.update(DELETE_SQL, id);
+//	}
+//	
+//	public List<MessageDTO> read(){
+//		return jdbc.query(SELECT_ALL_SQL, this::selectAll);
+//	}
+//	
+//	public List<MessageDTO> read(int id){
+//		return jdbc.query(SELECT_ALL_SQL, new BeanPropertyRowMapper<MessageDTO>(MessageDTO.class), id);
+//	}
+//	
+//	private MessageDTO selectAll(ResultSet resultSet, int rowNum) throws SQLException {
+//		return new MessageDTO(resultSet.getInt("seq"),resultSet.getString("writer"),resultSet.getString("message"));
+//	}
+//	
+
 //	public int insert(MessageDTO dto) throws SQLException {
 //		try (Connection connection = ds.getConnection()) {
 //			try (PreparedStatement preparedStatement = connection.prepareStatement(INSERT_SQL)) {
@@ -111,7 +126,5 @@ public class MessageDAO {
 //			}
 //		}
 //	}
-
-
 
 }

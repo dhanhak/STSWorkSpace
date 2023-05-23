@@ -22,7 +22,7 @@
 			</tr>
 		</c:forEach>
 		<tr>
-			<td colspan="3">
+			<td colspan="3" align="center">
 				<form action="/delete" method="post">
 					<input type="text" placeholder="삭제할 ID" name="seq"> 
 					<input type="submit" value="삭제">
@@ -30,7 +30,7 @@
 			</td>
 		</tr>
 		<tr>
-			<td colspan="3">
+			<td colspan="3" align="center">
 				<form action="/modify" method="post">
 					<input type="text" placeholder="수정할 ID" name="seq"> 
 					<input type="text" placeholder="수정할 이름" name="writer"> 

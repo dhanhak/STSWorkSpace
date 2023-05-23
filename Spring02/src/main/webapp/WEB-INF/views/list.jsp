@@ -22,7 +22,7 @@
 		<tr>
 			<td colspan="3" align="center">
 				<form action="/delete" method="post">
-					<input type="text" name="deleteID" placeholder="삭제할 영화 ID">
+					<input type="text" name="id" placeholder="삭제할 영화 ID">
 					<input type="submit" value="삭제하기">
 				</form>
 			</td>

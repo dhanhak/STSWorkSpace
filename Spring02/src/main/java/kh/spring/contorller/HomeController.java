@@ -46,9 +46,34 @@ public class HomeController {
 			return "list";
 	}
 	
+	@GetMapping("/toMyBatis")
+	public String toMyBatis() throws SQLException {
+		return "mybatis";
+	}
+	
+	@GetMapping("/selectByCon")
+	public String selectByCon(String column, String value) {
+		List<MoviesDTO> list = dao.selectByCon(column,value);
+		
+		for(MoviesDTO dto : list) {
+			System.out.println(dto.getId() + " : " + dto.getTitle() + " : " + dto.getGenre());
+		}
+		return "mybatis";
+	}
+	
+	@PostMapping("/selectByMultiCon")
+	public String selectMultiByCon(MoviesDTO dto) {
+		List<MoviesDTO> list = dao.selectByMultiCon(dto);
+		
+		for(MoviesDTO e : list) {
+			System.out.println(e.getId() + " : " + e.getTitle() + " : " + e.getGenre());
+		}
+		return "mybatis";
+	}
+	
 	@PostMapping(value = "/delete")
-	public String Delete(int deleteID) throws SQLException {
-			int result = dao.delete(deleteID);
+	public String delete(int id) throws SQLException {
+			int result = dao.delete(id);
 			return "redirect:/toOutput";
 	}
 	
@@ -64,13 +89,13 @@ public class HomeController {
 		System.out.println(dto.getId() +" : "+ dto.getTitle() +" : "+ dto.getGenre());
 		return "redirect:/";
 	}
-	
-	@GetMapping("/selectCount")
-	public String selectCount() {
-		int result = dao.selectCount();
-		System.out.println(result);
-		return "redirect:/";
-	}
+//	
+//	@GetMapping("/selectCount")
+//	public String selectCount() {
+//		int result = dao.selectCount();
+//		System.out.println(result);
+//		return "redirect:/";
+//	}
 	
 	@ExceptionHandler(SQLException.class)
 	public String exceptionHandler(Exception e) {
