@@ -58,14 +58,18 @@ public class FileController {
 	}
 
 	@RequestMapping("download")
-	public void download(String oriName, String sysName, HttpServletResponse resp) throws Exception {
+	public void download(
+			String oriName, 			// 클라이언트가 다운받는 파일의 이름을 지정하기 위해서 받음.
+			String sysName, 			// 서버쪽에 저장된 target 파일의 이름.
+			HttpServletResponse resp	// Dispatcher를 거치지 않고 stream을 통해 직접 전송하기 위해
+		) throws Exception {
 
 		String realPath = session.getServletContext().getRealPath("upload");
 		File target = new File(realPath+"/"+sysName);
 		// 다운 받을 파일을 선택하여 File 객체로 생성
 
-		oriName = new String(oriName.getBytes("utf8"),"ISO-8859-1");
-		resp.reset();
+		oriName = new String(oriName.getBytes("utf8"),"ISO-8859-1");	// 크롬에서 다운받을 때 ISO-8859-1로 해야함
+		resp.reset();	// resp에 불필요한 코드가 있으면 리셋
 		resp.setHeader("content-disposition", "attachment;filename="+oriName);
 		// 응답 헤더에 보내려는 데이터가 첨부파일임을 밝히고, 적절히 인코딩 된 파일이름을 지정
 
