@@ -1,9 +1,0 @@
-package kh.spring.controllers;
-
-public interface Tv {
-	private int price;
-	private String brand;
-	
-	public void powerOn();
-	public void powerOff();
-}
