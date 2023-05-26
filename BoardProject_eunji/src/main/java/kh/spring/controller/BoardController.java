@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
+import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,36 +17,36 @@ import kh.spring.repositories.BoardDAO;
 @RequestMapping("/board/")
 public class BoardController {
 	
-//	@Autowired
-//	private BoardDAO dao;
-//	
-//	@Autowired
-//	private HttpSession session;
-//	
-//	@RequestMapping("boardlist")
-//	public String boardlist(Model model) {
-//		List<BoardDTO> list = dao.selectAll();
-//		model.addAttribute("list", list);
-//		return "/board/board";
-//	}
-//	
-//	@RequestMapping("toWriteForm")
-//	public String toWriteForm() {
-//		return "board/writeForm";
-//	}
-//	
-//	@RequestMapping("writeContent")
-//	public String writeContent(BoardDTO dto) {
-//		String loginId = (String) session.getAttribute("loginId");
-//		dto.setWriter(loginId);
-//		int result = dao.insertContent(dto);
-//		return "redirect:boardlist";
-//	}
-//	
-//	@RequestMapping("toContentView")
-//	public String toContentView(int seq) {
-//		return "/board/contentView";
-//	}
+	@Autowired
+	private BoardDAO dao;
+	
+	@Autowired
+	private HttpSession session;
+	
+	@RequestMapping(value = "boardlist")
+	public String boardlist(Model model) {
+		List<BoardDTO> list = dao.selectAll();
+		model.addAttribute("list", list);
+		return "/board/board";
+	}
+	
+	@RequestMapping("toWriteForm")
+	public String toWriteForm() {
+		return "board/writeForm";
+	}
+	
+	@RequestMapping("writeContent")
+	public String writeContent(BoardDTO dto) {
+		String loginId = (String) session.getAttribute("loginId");
+		dto.setWriter(loginId);
+		int result = dao.insertContent(dto);
+		return "redirect:boardlist";
+	}
+	
+	@RequestMapping("toContentView")
+	public String toContentView(int seq) {
+		return "/board/contentView";
+	}
 	
 	
 	

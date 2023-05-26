@@ -10,7 +10,7 @@
 </head>
 <body>
 <form action="/board/writeContent" method="post">
-	<table border="1">
+	<table border="1" align="center">
 		<tr>
 			<th height="40">자유게시판 </th>
 		</tr>

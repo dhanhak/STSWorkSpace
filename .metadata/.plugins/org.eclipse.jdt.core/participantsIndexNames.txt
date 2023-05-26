@@ -19,5 +19,7 @@ C:\STSWorkSpace\STSWorkSpace\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsear
 \BoardProject\src\main\java
 C:\STSWorkSpace\STSWorkSpace\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2662411187.index
 \Spring03\src\main\java
+C:\STSWorkSpace\STSWorkSpace\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1706653147.index
+\Test00\src\main\java
 C:\STSWorkSpace\STSWorkSpace\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\4203004536.index
 \BoardProject_eunji\src\main\java
