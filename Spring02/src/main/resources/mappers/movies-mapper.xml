@@ -5,13 +5,17 @@
 <mapper namespace="Movies">
 
 	<insert id="insert">
-		INSERT INTO movies values(#{id}, #{title}, #{genre})	<!-- 싱글쿼테이션 필요하면 # 
-			, 필요없으면 $ -->
+		INSERT INTO movies values(#{id}, #{title}, #{genre})	
+		<!-- 싱글쿼테이션 필요하면 #, 필요없으면 $ -->
 	</insert>
 
 	<insert id="insertTwoDTO">
-		INSERT INTO movies values(#{dto1.id}, #{dto1.title}, #{dto2.genre})	<!-- 
-			두개의 값을 넘겨 받았을 때 -->
+		INSERT INTO movies values(#{dto1.id}, #{dto1.title}, #{dto2.genre})	
+		<!-- 두개의 값을 넘겨 받았을 때 -->
+	</insert>
+	
+	<insert id="insertHistory">
+		INSERT INTO history VALUES(history_seq.nextval, #{title}, sysdate)
 	</insert>
 
 	<select id="selectAll" resultType="kh.spring.dto.MoviesDTO">

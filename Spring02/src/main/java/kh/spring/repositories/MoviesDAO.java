@@ -65,15 +65,10 @@ public class MoviesDAO {
 	public List<MoviesDTO> selectByMultiCon(MoviesDTO dto) {
 		return mybatis.selectList("Movies.selectMultiByCon", dto);
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
+	public int insertHistory(MoviesDTO dto) {
+		return mybatis.insert("Movies.insertHistory", dto);
+	}
 	
 	
 	
