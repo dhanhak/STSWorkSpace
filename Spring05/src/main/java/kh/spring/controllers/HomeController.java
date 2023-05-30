@@ -16,7 +16,7 @@ public class HomeController {
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(HttpServletRequest request) {
-		session.setAttribute("ip", request.getRemoteAddr());
+//		session.setAttribute("ip", request.getRemoteAddr());
 		return "index";
 	}
 	

@@ -66,11 +66,13 @@ public class MemberController {
 	
 	@RequestMapping(value = "login", method = RequestMethod.POST)
 	public String login(Model model, MemberDTO dto) throws Exception {
+		
 		boolean result = dao.loginMember(dto);
+		System.out.println(result);
 		if(result) {
 			session.setAttribute("loginId", dto.getId());
 		}
-		//model.addAttribute("loginResult", result);
+//		model.addAttribute("loginResult", result);
 		return "redirect:/";
 	}
 

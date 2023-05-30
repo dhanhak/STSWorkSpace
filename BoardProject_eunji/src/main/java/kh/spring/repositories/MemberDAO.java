@@ -33,6 +33,7 @@ public class MemberDAO {
 	
 	public boolean loginMember(MemberDTO dto) throws Exception {
 		dto.setPw(EncryptionUtils.sha512(dto.getPw()));
+		System.out.println(dto.getPw());
 		return mybatis.selectOne("Member.loginMember", dto);
 	}
 	

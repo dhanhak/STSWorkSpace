@@ -12,26 +12,26 @@
 	
 	<c:choose>
 		<c:when test="${empty loginId}">
-			<form action="member/login" method="post">
+			<form action="/member/login" method="post">
 				<table border="1" align="center">
 					<tr>
 						<th colspan="2">Login Box</th>
 					</tr>
 					<tr>
 						<td>아이디 :</td>
-						<td><input type="text" name="id"
-							placeholder="Input your id"></td>
+						<td>
+						<input type="text" name="id" placeholder="Input your id"></td>
 					</tr>
 					<tr>
 						<td>패스워드 :</td>
-						<td><input type="password" name="pw"
-							placeholder="Input your pw"></td>
+						<td>
+						<input type="password" name="pw" placeholder="Input your pw"></td>
 					</tr>
 					<tr>
-						<td colspan="2" align="center"><input type="submit"
-							id="login" value="로그인"> <input type="button" id="toJoin"
-							value="회원가입"><br> <input type="checkbox">ID
-							기억하기</td>
+						<td colspan="2" align="center">
+						<input type="submit" id="login" value="로그인"> 
+						<input type="button" id="toJoin" value="회원가입"><br> 
+						<input type="checkbox">ID 기억하기</td>
 					</tr>
 				</table>
 			</form>
@@ -39,13 +39,14 @@
 		<c:otherwise>
 			<table border=1 align=center>
 				<tr>
-					<th colspan=4>${loginId} 님 환영합니다.</th>
+					<th colspan=5>${loginId} 님 환영합니다.</th>
 				</tr>
 				<tr>
 					<td align=center><a href="board/boardlist"><button>게시판으로</button></a></td>
 					<td align=center><a href="member/mypage"><button>마이페이지</button></a></td>
+					<td align=center><a href="chat/main"><button>채팅방</button></a></td>
 					<td align=center><a href="member/logout"><button>로그아웃</button></a></td>
-					<td align=center><button id="memberOut">회원탈퇴</button></a></td>
+					<td align=center><button id="memberOut">회원탈퇴</button></td>
 				</tr>
 			</table>
 		</c:otherwise>
