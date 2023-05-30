@@ -13,7 +13,7 @@ public class MoviesService {
 	@Autowired
 	private MoviesDAO dao;
 
-
+	@Transactional
 	public void tansactionTest(MoviesDTO dto) {
 		dao.insert(dto);
 		dao.insertHistory(dto);
