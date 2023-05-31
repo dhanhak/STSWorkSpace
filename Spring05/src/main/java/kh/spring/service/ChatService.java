@@ -8,6 +8,5 @@ import kh.spring.repositories.ChatDAO;
 @Service
 public class ChatService {
 
-	@Autowired
-	private ChatDAO dao;
+
 }

@@ -57,7 +57,7 @@ div {
 				}
 				for (let i = 0; i < data.length; i++) {
 					const line = $('<div>');
-					line.append(data[i].sender + " : " + data[i].message);
+					line.append(data[i].sender + " : " + data[i].message).css("border","none");
 					$('.body').append(line).css("overflow","auto");
 				}
 

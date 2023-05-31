@@ -9,6 +9,8 @@ C:\STSWorkSpace\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\700969258.
 \Spring06_STOMP\src\main\java
 C:\STSWorkSpace\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3184682709.index
 \Spring05\src\main\java
+C:\STSWorkSpace\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3725182338.index
+\Spring07_Interceptor\src\main\java
 C:\STSWorkSpace\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\55055992.index
 \TestChat\src\main\java
 C:\STSWorkSpace\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\4203004536.index
