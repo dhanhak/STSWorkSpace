@@ -5,6 +5,8 @@ C:\STSWorkSpace\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2519057924
 \BoardProject_eunji\src\main\java
 C:\STSWorkSpace\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3711603115.index
 \BoardSpring_sungjun\src\main\java
+C:\STSWorkSpace\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\700969258.index
+\Spring06_STOMP\src\main\java
 C:\STSWorkSpace\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3184682709.index
 \Spring05\src\main\java
 C:\STSWorkSpace\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\55055992.index
